@@ -2,14 +2,14 @@ const express = require("express");
 const app = express();
 const PORT = 5000;
 const userData = require("./DATA.json");
+const graphql = require("graphql");
 const {
-  graphql,
   GraphQLObjectType,
   GraphQLSchema,
   GraphQLString,
   GraphQLInt,
   GraphQLList,
-} = require("graphql");
+} = graphql;
 const { graphqlHTTP } = require("express-graphql");
 
 const UserType = new GraphQLObjectType({
@@ -36,7 +36,7 @@ const RootQuery = new GraphQLObjectType({
   },
 });
 const Mutation = new GraphQLObjectType({
-  nameL: "Mutation",
+  name: "Mutation",
   fields: {
     createUser: {
       type: UserType,
